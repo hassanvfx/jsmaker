@@ -1,0 +1,347 @@
+{
+  "version": "1.0.0",
+  "totalTracks": 34,
+  "categories": {
+    "norteno": {
+      "name": "Norteño",
+      "emoji": "🎸",
+      "description": "Traditional norteño style with accordion and bajo sexto",
+      "tracks": [
+        {
+          "id": "estilo_alfredo_munoz_cero_envidias",
+          "filename": "estilo_alfredo_munoz_cero_envidias.mp3",
+          "title": "- Alfredo Munoz Cero Envidias",
+          "style": "Norteño",
+          "artist": "Alfredo Munoz Cero Envidias",
+          "subgenre": null,
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/corridos_norteno_banda/estilo_alfredo_munoz_cero_envidias.mp3"
+        },
+        {
+          "id": "norteno_ariel_camacho",
+          "filename": "norteno_ariel_camacho.mp3",
+          "title": "- Ariel Camacho",
+          "style": "Norteño",
+          "artist": "Ariel Camacho",
+          "subgenre": null,
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/corridos_norteno_banda/norteno_ariel_camacho.mp3"
+        },
+        {
+          "id": "norteno_belico_el_27",
+          "filename": "norteno_belico_el_27.mp3",
+          "title": "Belico - El 27",
+          "style": "Norteño",
+          "artist": "El 27",
+          "subgenre": "belico",
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/corridos_norteno_banda/norteno_belico_el_27.mp3"
+        },
+        {
+          "id": "norteno_charly_gonzalez_(novillos)",
+          "filename": "norteno_charly_gonzalez_(novillos).mp3",
+          "title": "- Charly Gonzalez (Novillos)",
+          "style": "Norteño",
+          "artist": "Charly Gonzalez (Novillos)",
+          "subgenre": null,
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/corridos_norteno_banda/norteno_charly_gonzalez_(novillos).mp3"
+        },
+        {
+          "id": "norteno_clasico_estilo_tigres_del_norte",
+          "filename": "norteno_clasico_estilo_tigres_del_norte.mp3",
+          "title": "Clasico - Estilo Tigres Del Norte",
+          "style": "Norteño",
+          "artist": "Estilo Tigres Del Norte",
+          "subgenre": "clasico",
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/corridos_norteno_banda/norteno_clasico_estilo_tigres_del_norte.mp3"
+        },
+        {
+          "id": "norteno_clasico_huracanes_del_norte_mama_chonita",
+          "filename": "norteno_clasico_huracanes_del_norte_mama_chonita.mp3",
+          "title": "Clasico - Huracanes Del Norte Mama Chonita",
+          "style": "Norteño",
+          "artist": "Huracanes Del Norte Mama Chonita",
+          "subgenre": "clasico",
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/corridos_norteno_banda/norteno_clasico_huracanes_del_norte_mama_chonita.mp3"
+        },
+        {
+          "id": "norteno_clasico_punto_clave",
+          "filename": "norteno_clasico_punto_clave.mp3",
+          "title": "Clasico - Punto Clave",
+          "style": "Norteño",
+          "artist": "Punto Clave",
+          "subgenre": "clasico",
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/corridos_norteno_banda/norteno_clasico_punto_clave.mp3"
+        },
+        {
+          "id": "norteno_el_luchador",
+          "filename": "norteno_el_luchador.mp3",
+          "title": "- El Luchador",
+          "style": "Norteño",
+          "artist": "El Luchador",
+          "subgenre": null,
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/corridos_norteno_banda/norteno_el_luchador.mp3"
+        },
+        {
+          "id": "norteno_romantico_mi_chiquita",
+          "filename": "norteno_romantico_mi_chiquita.mp3",
+          "title": "Romantico - Mi Chiquita",
+          "style": "Norteño",
+          "artist": "Mi Chiquita",
+          "subgenre": "romantico",
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/corridos_norteno_banda/norteno_romantico_mi_chiquita.mp3"
+        },
+        {
+          "id": "noteno_corrido",
+          "filename": "noteno_corrido.mp3",
+          "title": "- Corrido",
+          "style": "Norteño",
+          "artist": "Corrido",
+          "subgenre": null,
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/corridos_norteno_banda/noteno_corrido.mp3"
+        },
+        {
+          "id": "noteno_tumbado_el_tizoc",
+          "filename": "noteno_tumbado_el_tizoc.mp3",
+          "title": "- Tumbado El Tizoc",
+          "style": "Norteño",
+          "artist": "Tumbado El Tizoc",
+          "subgenre": null,
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/corridos_norteno_banda/noteno_tumbado_el_tizoc.mp3"
+        }
+      ]
+    },
+    "banda": {
+      "name": "Banda",
+      "emoji": "🎺",
+      "description": "Brass-heavy banda sinaloense style",
+      "tracks": [
+        {
+          "id": "banda_epico_franchesco",
+          "filename": "banda_epico_franchesco.mp3",
+          "title": "Epico - Franchesco",
+          "style": "Banda",
+          "artist": "Franchesco",
+          "subgenre": "epico",
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/corridos_norteno_banda/banda_epico_franchesco.mp3"
+        },
+        {
+          "id": "banda_gallo_enjaulado",
+          "filename": "banda_gallo_enjaulado.mp3",
+          "title": "- Gallo Enjaulado",
+          "style": "Banda",
+          "artist": "Gallo Enjaulado",
+          "subgenre": null,
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/corridos_norteno_banda/banda_gallo_enjaulado.mp3"
+        },
+        {
+          "id": "banda_gerardo_ortiz_muchacho_tranquilo",
+          "filename": "banda_gerardo_ortiz_muchacho_tranquilo.mp3",
+          "title": "- Gerardo Ortiz Muchacho Tranquilo",
+          "style": "Banda",
+          "artist": "Gerardo Ortiz Muchacho Tranquilo",
+          "subgenre": null,
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/corridos_norteno_banda/banda_gerardo_ortiz_muchacho_tranquilo.mp3"
+        },
+        {
+          "id": "banda_los_cardenas",
+          "filename": "banda_los_cardenas.mp3",
+          "title": "- Los Cardenas",
+          "style": "Banda",
+          "artist": "Los Cardenas",
+          "subgenre": null,
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/corridos_norteno_banda/banda_los_cardenas.mp3"
+        },
+        {
+          "id": "banda_sinaloense_el_veracruzano",
+          "filename": "banda_sinaloense_el_veracruzano.mp3",
+          "title": "Sinaloense - El Veracruzano",
+          "style": "Banda",
+          "artist": "El Veracruzano",
+          "subgenre": "sinaloense",
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/corridos_norteno_banda/banda_sinaloense_el_veracruzano.mp3"
+        },
+        {
+          "id": "banda_sinaloense_r_conriquez",
+          "filename": "banda_sinaloense_r_conriquez.mp3",
+          "title": "Sinaloense - R Conriquez",
+          "style": "Banda",
+          "artist": "R Conriquez",
+          "subgenre": "sinaloense",
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/corridos_norteno_banda/banda_sinaloense_r_conriquez.mp3"
+        }
+      ]
+    },
+    "tumbado": {
+      "name": "Corrido Tumbado",
+      "emoji": "🔥",
+      "description": "Modern corrido tumbado with trap influences",
+      "tracks": [
+        {
+          "id": "tumbado_belico_el_pantera",
+          "filename": "tumbado_belico_el_pantera.mp3",
+          "title": "Belico - El Pantera",
+          "style": "Corrido Tumbado",
+          "artist": "El Pantera",
+          "subgenre": "belico",
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/corridos_norteno_banda/tumbado_belico_el_pantera.mp3"
+        },
+        {
+          "id": "tumbado_belico_linea_de_fuego",
+          "filename": "tumbado_belico_linea_de_fuego.mp3",
+          "title": "Belico - Linea De Fuego",
+          "style": "Corrido Tumbado",
+          "artist": "Linea De Fuego",
+          "subgenre": "belico",
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/corridos_norteno_banda/tumbado_belico_linea_de_fuego.mp3"
+        },
+        {
+          "id": "tumbado_corrido_el_flaco_melendez",
+          "filename": "tumbado_corrido_el_flaco_melendez.mp3",
+          "title": "- Corrido El Flaco Melendez",
+          "style": "Corrido Tumbado",
+          "artist": "Corrido El Flaco Melendez",
+          "subgenre": null,
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/corridos_norteno_banda/tumbado_corrido_el_flaco_melendez.mp3"
+        },
+        {
+          "id": "tumbado_sentimental_corrido_de_la_superacion",
+          "filename": "tumbado_sentimental_corrido_de_la_superacion.mp3",
+          "title": "Sentimental - Corrido De La Superacion",
+          "style": "Corrido Tumbado",
+          "artist": "Corrido De La Superacion",
+          "subgenre": "sentimental",
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/corridos_norteno_banda/tumbado_sentimental_corrido_de_la_superacion.mp3"
+        },
+        {
+          "id": "tumbado_trap_corrido_gangsta",
+          "filename": "tumbado_trap_corrido_gangsta.mp3",
+          "title": "- Trap Corrido Gangsta",
+          "style": "Corrido Tumbado",
+          "artist": "Trap Corrido Gangsta",
+          "subgenre": null,
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/corridos_norteno_banda/tumbado_trap_corrido_gangsta.mp3"
+        }
+      ]
+    },
+    "trap": {
+      "name": "Trap Corrido",
+      "emoji": "💀",
+      "description": "Heavy trap beats with corrido lyrics",
+      "tracks": [
+        {
+          "id": "trap_corrido_cover_modo_serio",
+          "filename": "trap_corrido_cover_modo_serio.mp3",
+          "title": "- Corrido Cover Modo Serio",
+          "style": "Trap Corrido",
+          "artist": "Corrido Cover Modo Serio",
+          "subgenre": null,
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/corridos_norteno_banda/trap_corrido_cover_modo_serio.mp3"
+        }
+      ]
+    },
+    "rap": {
+      "name": "Rap Mexicano",
+      "emoji": "🎤",
+      "description": "Mexican hip-hop and rap",
+      "tracks": [
+        {
+          "id": "rap_cover_makabelico",
+          "filename": "rap_cover_makabelico.mp3",
+          "title": "- Cover Makabelico",
+          "style": "Rap Mexicano",
+          "artist": "Cover Makabelico",
+          "subgenre": null,
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/rap/rap_cover_makabelico.mp3"
+        },
+        {
+          "id": "rap_dark_mass_leon-negro",
+          "filename": "rap_dark_mass_leon-negro.mp3",
+          "title": "Dark - Mass Leon-Negro",
+          "style": "Rap Mexicano",
+          "artist": "Mass Leon-Negro",
+          "subgenre": "dark",
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/rap/rap_dark_mass_leon-negro.mp3"
+        },
+        {
+          "id": "rap_del_nini_cover_lefty",
+          "filename": "rap_del_nini_cover_lefty.mp3",
+          "title": "- Del Nini Cover Lefty",
+          "style": "Rap Mexicano",
+          "artist": "Del Nini Cover Lefty",
+          "subgenre": null,
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/rap/rap_del_nini_cover_lefty.mp3"
+        },
+        {
+          "id": "rap_desde_el_primer_llanto",
+          "filename": "rap_desde_el_primer_llanto.mp3",
+          "title": "- Desde El Primer Llanto",
+          "style": "Rap Mexicano",
+          "artist": "Desde El Primer Llanto",
+          "subgenre": null,
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/rap/rap_desde_el_primer_llanto.mp3"
+        },
+        {
+          "id": "rap_hiph_hop_el_munrra",
+          "filename": "rap_hiph_hop_el_munrra.mp3",
+          "title": "Hiph - Hop El Munrra",
+          "style": "Rap Mexicano",
+          "artist": "Hop El Munrra",
+          "subgenre": "hiph",
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/rap/rap_hiph_hop_el_munrra.mp3"
+        },
+        {
+          "id": "rap_la_vida_nos_marco",
+          "filename": "rap_la_vida_nos_marco.mp3",
+          "title": "- La Vida Nos Marco",
+          "style": "Rap Mexicano",
+          "artist": "La Vida Nos Marco",
+          "subgenre": null,
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/rap/rap_la_vida_nos_marco.mp3"
+        },
+        {
+          "id": "rap_mexicano",
+          "filename": "rap_mexicano.mp3",
+          "title": "- Mexicano",
+          "style": "Rap Mexicano",
+          "artist": "Mexicano",
+          "subgenre": null,
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/rap/rap_mexicano.mp3"
+        },
+        {
+          "id": "rap_mi_carnal_ammir",
+          "filename": "rap_mi_carnal_ammir.mp3",
+          "title": "- Mi Carnal Ammir",
+          "style": "Rap Mexicano",
+          "artist": "Mi Carnal Ammir",
+          "subgenre": null,
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/rap/rap_mi_carnal_ammir.mp3"
+        },
+        {
+          "id": "rap_mis_hijas",
+          "filename": "rap_mis_hijas.mp3",
+          "title": "- Mis Hijas",
+          "style": "Rap Mexicano",
+          "artist": "Mis Hijas",
+          "subgenre": null,
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/rap/rap_mis_hijas.mp3"
+        },
+        {
+          "id": "rap_romantic_vibe",
+          "filename": "rap_romantic_vibe.mp3",
+          "title": "Romantic - Vibe",
+          "style": "Rap Mexicano",
+          "artist": "Vibe",
+          "subgenre": "romantic",
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/rap/rap_romantic_vibe.mp3"
+        },
+        {
+          "id": "rap_romantico",
+          "filename": "rap_romantico.mp3",
+          "title": "- Romantico",
+          "style": "Rap Mexicano",
+          "artist": "Romantico",
+          "subgenre": null,
+          "url": "https://hassanvfx.github.io/jsmaker/data/styles/rap/rap_romantico.mp3"
+        }
+      ]
+    }
+  }
+}
