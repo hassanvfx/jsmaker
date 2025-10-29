@@ -3,5 +3,5 @@
   "name": "Rap Mexicano",
   "description": "Mexican hip-hop and rap styles",
   "genre": "hip-hop",
-  "referenceAudio": "http://localhost:8888/rap/rap_mexicano.mp3"
+  "referenceAudio": "https://hassanvfx.github.io/jsmaker/data/styles/rap/rap_mexicano.mp3"
 }
