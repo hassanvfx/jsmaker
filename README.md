@@ -4,8 +4,6 @@
 
 A ComfyUI-style local application for creating and validating AI-generated corridos with automatic pronunciation correction and quality validation.
 
-🎸 **Visit [PideTuCancion.com](https://PideTuCancion.com)** - Request your custom corrido!
-
 📚 **[Browse 34 Reference Tracks](https://hassanvfx.github.io/jsmaker/)** - Explore our curated audio catalog organized by style (Norteño, Banda, Tumbado, Trap, Rap)
 
 ## 🎯 Overview
