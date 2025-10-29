@@ -81,6 +81,16 @@ function extractTaskId(response: SunoApiResponse<TaskIdResponse>): string {
 
 /**
  * Poll until task completes or times out
+ * 
+ * Official Suno API Status Values:
+ * - PENDING: Task is waiting to be processed
+ * - TEXT_SUCCESS: Lyrics/text generation completed successfully
+ * - FIRST_SUCCESS: First track generation completed successfully
+ * - SUCCESS: All tracks generated successfully
+ * - CREATE_TASK_FAILED: Failed to create the generation task
+ * - GENERATE_AUDIO_FAILED: Failed to generate music tracks
+ * - CALLBACK_EXCEPTION: Error occurred during callback
+ * - SENSITIVE_WORD_ERROR: Content contains prohibited words
  */
 async function pollUntilComplete<T>(
   getDetailsFn: () => Promise<T & { status: string }>,
@@ -90,12 +100,24 @@ async function pollUntilComplete<T>(
   for (let i = 0; i < maxAttempts; i++) {
     const details = await getDetailsFn();
     
-    if (details.status === 'complete' || details.status === 'completed') {
+    // Check for success states (uppercase as per Suno API)
+    if (details.status === 'SUCCESS' || 
+        details.status === 'FIRST_SUCCESS' ||
+        details.status === 'TEXT_SUCCESS') {
       return details;
     }
     
-    if (details.status === 'error') {
-      throw new Error('Generation failed with error status');
+    // Check for error states
+    if (details.status === 'CREATE_TASK_FAILED' || 
+        details.status === 'GENERATE_AUDIO_FAILED' ||
+        details.status === 'CALLBACK_EXCEPTION' ||
+        details.status === 'SENSITIVE_WORD_ERROR') {
+      throw new Error(`Generation failed with status: ${details.status}`);
+    }
+    
+    // Still pending, wait before next poll
+    if (details.status !== 'PENDING') {
+      console.warn(`Unknown status: ${details.status}`);
     }
     
     // Wait before next poll
@@ -523,11 +545,11 @@ export const sunoService = {
 
   /**
    * Get Music Generation Details - Check generation status
-   * Endpoint: GET /api/v1/details
+   * Endpoint: GET /api/v1/generate/record-info
    */
   async getMusicDetails(taskId: string): Promise<MusicGenerationDetails> {
     const response = await api.get<SunoApiResponse<MusicGenerationDetails>>(
-      `/api/v1/details`,
+      `/api/v1/generate/record-info`,
       { params: { taskId } }
     );
 
