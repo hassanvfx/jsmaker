@@ -1,0 +1,856 @@
+openapi: 3.0.3
+info:
+  title: Suno API
+  description: |
+    Complete Suno API specification for AI music generation.
+    
+    **Base URL:** https://api.sunoapi.org
+    
+    **Features:**
+    - Music Generation (8 endpoints)
+    - Lyrics Generation (2 endpoints)
+    - Audio Processing (3 endpoints)
+    - Music Video Generation (1 endpoint)
+    - Status Queries (7 endpoints)
+    
+    **Resources:**
+    - Official Docs: https://docs.sunoapi.org/
+    - API Key: https://sunoapi.org/api-key
+  version: 1.0.0
+  contact:
+    email: support@sunoapi.org
+    url: https://sunoapi.org
+
+servers:
+  - url: https://api.sunoapi.org
+    description: Production server
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: Music Generation
+    description: Create and modify music tracks
+  - name: Lyrics
+    description: Generate and retrieve lyrics
+  - name: Audio Processing
+    description: Process and transform audio
+  - name: Music Video
+    description: Generate music videos
+  - name: Status
+    description: Check task status and details
+
+paths:
+  /api/v1/generate:
+    post:
+      tags:
+        - Music Generation
+      summary: Generate Music
+      description: Create music from text description or lyrics
+      operationId: generateMusic
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerateMusicRequest'
+            example:
+              customMode: true
+              instrumental: false
+              model: "V5"
+              prompt: "Lyrics or description here"
+              style: "Regional Mexican corrido"
+              title: "My Song"
+              callBackUrl: "https://example.com/callback"
+      responses:
+        '200':
+          description: Task created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskResponse'
+
+  /api/v1/extend:
+    post:
+      tags:
+        - Music Generation
+      summary: Extend Music
+      description: Continue existing track from timestamp
+      operationId: extendMusic
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExtendMusicRequest'
+      responses:
+        '200':
+          description: Task created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskResponse'
+
+  /api/v1/generate/upload-cover:
+    post:
+      tags:
+        - Music Generation
+      summary: Upload and Cover Audio (Remix)
+      description: |
+        Remix with reference audio. This is the correct endpoint for remixing!
+        Reference audio must be accessible via HTTP/HTTPS.
+      operationId: uploadAndCover
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UploadAndCoverRequest'
+            example:
+              uploadUrl: "http://localhost:8888/reference.mp3"
+              customMode: true
+              instrumental: false
+              model: "V5"
+              prompt: "New lyrics"
+              style: "Regional Mexican"
+              title: "Cover Version"
+              callBackUrl: "https://example.com/callback"
+      responses:
+        '200':
+          description: Task created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskResponse'
+
+  /api/v1/generate/upload-extend:
+    post:
+      tags:
+        - Music Generation
+      summary: Upload and Extend Audio
+      description: Upload file and extend it
+      operationId: uploadAndExtend
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UploadAndExtendRequest'
+      responses:
+        '200':
+          description: Task created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskResponse'
+
+  /api/v1/generate/add-instrumental:
+    post:
+      tags:
+        - Music Generation
+      summary: Add Instrumental
+      description: Generate instrumental for vocals
+      operationId: addInstrumental
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddInstrumentalRequest'
+      responses:
+        '200':
+          description: Task created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskResponse'
+
+  /api/v1/generate/add-vocals:
+    post:
+      tags:
+        - Music Generation
+      summary: Add Vocals
+      description: Generate vocals for instrumental
+      operationId: addVocals
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddVocalsRequest'
+      responses:
+        '200':
+          description: Task created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskResponse'
+
+  /api/v1/cover:
+    post:
+      tags:
+        - Music Generation
+      summary: Cover Music
+      description: Generate music cover from existing audio ID
+      operationId: coverMusic
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CoverMusicRequest'
+      responses:
+        '200':
+          description: Task created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskResponse'
+
+  /api/v1/boost-music-style:
+    post:
+      tags:
+        - Music Generation
+      summary: Boost Music Style
+      description: Enhance music style characteristics
+      operationId: boostMusicStyle
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BoostMusicStyleRequest'
+      responses:
+        '200':
+          description: Task created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskResponse'
+
+  /api/v1/generate/lyrics:
+    post:
+      tags:
+        - Lyrics
+      summary: Generate Lyrics
+      description: Create AI-powered lyrics from prompt
+      operationId: generateLyrics
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - prompt
+                - callBackUrl
+              properties:
+                prompt:
+                  type: string
+                  description: Description for lyrics generation
+                  example: "A corrido about a hero from Sinaloa"
+                callBackUrl:
+                  type: string
+                  format: uri
+                  example: "https://example.com/callback"
+      responses:
+        '200':
+          description: Task created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskResponse'
+
+  /api/v1/lyrics/timestamped:
+    post:
+      tags:
+        - Lyrics
+      summary: Get Timestamped Lyrics
+      description: Retrieve synced lyrics with timestamps
+      operationId: getTimestampedLyrics
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - audioId
+              properties:
+                audioId:
+                  type: string
+                  description: Audio ID to get timestamped lyrics for
+      responses:
+        '200':
+          description: Timestamped lyrics retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+  /api/v1/separate-vocals:
+    post:
+      tags:
+        - Audio Processing
+      summary: Separate Vocals
+      description: Extract vocals and instrumental tracks
+      operationId: separateVocals
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - audioUrl
+                - model
+                - callBackUrl
+              properties:
+                audioUrl:
+                  type: string
+                  format: uri
+                  example: "http://example.com/song.mp3"
+                model:
+                  type: string
+                  default: "default"
+                callBackUrl:
+                  type: string
+                  format: uri
+      responses:
+        '200':
+          description: Task created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskResponse'
+
+  /api/v1/convert-wav:
+    post:
+      tags:
+        - Audio Processing
+      summary: Convert to WAV
+      description: Convert audio to high-quality WAV format
+      operationId: convertToWav
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - audioId
+                - callBackUrl
+              properties:
+                audioId:
+                  type: string
+                callBackUrl:
+                  type: string
+                  format: uri
+      responses:
+        '200':
+          description: Task created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskResponse'
+
+  /api/v1/generate/persona:
+    post:
+      tags:
+        - Audio Processing
+      summary: Generate Persona
+      description: Create music persona from audio for reuse
+      operationId: generatePersona
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - audioId
+                - callBackUrl
+              properties:
+                audioId:
+                  type: string
+                callBackUrl:
+                  type: string
+                  format: uri
+      responses:
+        '200':
+          description: Persona created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+  /api/v1/create-music-video:
+    post:
+      tags:
+        - Music Video
+      summary: Create Music Video
+      description: Generate visual music video from audio
+      operationId: createMusicVideo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - audioId
+                - callBackUrl
+              properties:
+                audioId:
+                  type: string
+                imageUrl:
+                  type: string
+                  format: uri
+                videoPrompt:
+                  type: string
+                callBackUrl:
+                  type: string
+                  format: uri
+      responses:
+        '200':
+          description: Task created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskResponse'
+
+  /api/v1/details:
+    get:
+      tags:
+        - Status
+      summary: Get Music Generation Details
+      description: Check generation status and retrieve results
+      operationId: getMusicDetails
+      parameters:
+        - name: taskId
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Task ID to check
+      responses:
+        '200':
+          description: Task details retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+  /api/v1/lyrics/details:
+    get:
+      tags:
+        - Status
+      summary: Get Lyrics Generation Details
+      operationId: getLyricsDetails
+      parameters:
+        - name: taskId
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Lyrics details retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+  /api/v1/wav/details:
+    get:
+      tags:
+        - Status
+      summary: Get WAV Conversion Details
+      operationId: getWavDetails
+      parameters:
+        - name: taskId
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: WAV conversion details retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+  /api/v1/vocal-separation/details:
+    get:
+      tags:
+        - Status
+      summary: Get Vocal Separation Details
+      operationId: getVocalSeparationDetails
+      parameters:
+        - name: taskId
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Separation details retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+  /api/v1/music-video/details:
+    get:
+      tags:
+        - Status
+      summary: Get Music Video Details
+      operationId: getMusicVideoDetails
+      parameters:
+        - name: taskId
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Video details retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+  /api/v1/cover/details:
+    get:
+      tags:
+        - Status
+      summary: Get Cover Details
+      operationId: getCoverDetails
+      parameters:
+        - name: taskId
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Cover details retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+  /api/v1/credits:
+    get:
+      tags:
+        - Status
+      summary: Get Remaining Credits
+      description: Check account credit balance
+      operationId: getRemainingCredits
+      responses:
+        '200':
+          description: Credits retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: |
+        Get your API key from https://sunoapi.org/api-key
+        Format: Authorization: Bearer YOUR_API_KEY
+
+  schemas:
+    SunoModel:
+      type: string
+      enum:
+        - V3_5
+        - V4
+        - V4_5
+        - V4_5PLUS
+        - V5
+      description: |
+        AI model versions:
+        - V5: Best quality, fastest (recommended)
+        - V4_5PLUS: Longest tracks (8 minutes)
+        - V4_5: Smart prompts, fast output
+        - V4: Good balance
+        - V3_5: Basic but reliable
+
+    VocalGender:
+      type: string
+      enum:
+        - m
+        - f
+      description: Preferred vocal gender
+
+    GenerateMusicRequest:
+      type: object
+      required:
+        - customMode
+        - instrumental
+        - model
+        - callBackUrl
+      properties:
+        customMode:
+          type: boolean
+          description: true = custom mode (precise control), false = auto mode
+        instrumental:
+          type: boolean
+          description: true = no vocals
+        model:
+          $ref: '#/components/schemas/SunoModel'
+        callBackUrl:
+          type: string
+          format: uri
+        prompt:
+          type: string
+          description: Lyrics or description (required if instrumental=false)
+        style:
+          type: string
+          description: Genre/style description (required in custom mode)
+        title:
+          type: string
+          description: Song title (required in custom mode)
+        personaId:
+          type: string
+        negativeTags:
+          type: string
+        vocalGender:
+          $ref: '#/components/schemas/VocalGender'
+        styleWeight:
+          type: number
+          minimum: 0
+          maximum: 1
+        weirdnessConstraint:
+          type: number
+          minimum: 0
+          maximum: 1
+        audioWeight:
+          type: number
+          minimum: 0
+          maximum: 1
+
+    ExtendMusicRequest:
+      type: object
+      required:
+        - audioId
+        - continueAt
+        - customMode
+        - instrumental
+        - model
+        - callBackUrl
+      properties:
+        audioId:
+          type: string
+        continueAt:
+          type: number
+          description: Timestamp in seconds
+        customMode:
+          type: boolean
+        instrumental:
+          type: boolean
+        model:
+          $ref: '#/components/schemas/SunoModel'
+        callBackUrl:
+          type: string
+          format: uri
+        prompt:
+          type: string
+        style:
+          type: string
+        title:
+          type: string
+
+    UploadAndCoverRequest:
+      type: object
+      required:
+        - uploadUrl
+        - customMode
+        - instrumental
+        - model
+        - callBackUrl
+      properties:
+        uploadUrl:
+          type: string
+          format: uri
+          description: URL to reference audio (must be accessible via HTTP/HTTPS)
+        customMode:
+          type: boolean
+        instrumental:
+          type: boolean
+        model:
+          $ref: '#/components/schemas/SunoModel'
+        callBackUrl:
+          type: string
+          format: uri
+        prompt:
+          type: string
+        style:
+          type: string
+        title:
+          type: string
+
+    UploadAndExtendRequest:
+      type: object
+      required:
+        - uploadUrl
+        - continueAt
+        - customMode
+        - instrumental
+        - model
+        - callBackUrl
+      properties:
+        uploadUrl:
+          type: string
+          format: uri
+        continueAt:
+          type: number
+        customMode:
+          type: boolean
+        instrumental:
+          type: boolean
+        model:
+          $ref: '#/components/schemas/SunoModel'
+        callBackUrl:
+          type: string
+          format: uri
+        prompt:
+          type: string
+        style:
+          type: string
+        title:
+          type: string
+
+    AddInstrumentalRequest:
+      type: object
+      required:
+        - audioId
+        - customMode
+        - model
+        - callBackUrl
+      properties:
+        audioId:
+          type: string
+        customMode:
+          type: boolean
+        model:
+          $ref: '#/components/schemas/SunoModel'
+        callBackUrl:
+          type: string
+          format: uri
+        style:
+          type: string
+        title:
+          type: string
+
+    AddVocalsRequest:
+      type: object
+      required:
+        - audioId
+        - customMode
+        - model
+        - callBackUrl
+      properties:
+        audioId:
+          type: string
+        customMode:
+          type: boolean
+        model:
+          $ref: '#/components/schemas/SunoModel'
+        callBackUrl:
+          type: string
+          format: uri
+        prompt:
+          type: string
+        style:
+          type: string
+        title:
+          type: string
+        vocalGender:
+          $ref: '#/components/schemas/VocalGender'
+
+    CoverMusicRequest:
+      type: object
+      required:
+        - audioId
+        - customMode
+        - instrumental
+        - model
+        - callBackUrl
+      properties:
+        audioId:
+          type: string
+        customMode:
+          type: boolean
+        instrumental:
+          type: boolean
+        model:
+          $ref: '#/components/schemas/SunoModel'
+        callBackUrl:
+          type: string
+          format: uri
+        prompt:
+          type: string
+        style:
+          type: string
+        title:
+          type: string
+
+    BoostMusicStyleRequest:
+      type: object
+      required:
+        - audioId
+        - model
+        - callBackUrl
+      properties:
+        audioId:
+          type: string
+        model:
+          $ref: '#/components/schemas/SunoModel'
+        callBackUrl:
+          type: string
+          format: uri
+
+    ApiResponse:
+      type: object
+      required:
+        - code
+        - msg
+        - data
+      properties:
+        code:
+          type: integer
+          description: |
+            Status codes:
+            - 200: Success
+            - 400: Invalid parameters
+            - 401: Unauthorized
+            - 404: Invalid endpoint
+            - 405: Rate limit exceeded
+            - 413: Prompt too long
+            - 429: Insufficient credits
+            - 430: Call frequency too high
+            - 455: System maintenance
+            - 500: Server error
+        msg:
+          type: string
+        data:
+          type: object
+
+    TaskResponse:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponse'
+        - type: object
+          properties:
+            data:
+              type: object
+              properties:
+                taskId:
+                  type: string
+                  description: Task ID for status polling

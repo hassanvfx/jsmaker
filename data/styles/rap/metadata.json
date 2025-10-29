@@ -1,0 +1,7 @@
+{
+  "id": "rap",
+  "name": "Rap Mexicano",
+  "description": "Mexican hip-hop and rap styles",
+  "genre": "hip-hop",
+  "referenceAudio": "http://localhost:8888/rap/rap_mexicano.mp3"
+}

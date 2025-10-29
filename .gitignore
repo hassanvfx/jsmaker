@@ -1,0 +1,45 @@
+# Environment variables
+.env
+.env.local
+
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build outputs
+dist/
+build/
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+.venv/
+
+# Project data (optional - uncomment if you don't want to commit projects)
+# data/projects/
+# data/styles/
+
+# Generated files (but allow reference audio in data/styles)
+data/projects/**/*.mp3
+data/projects/**/*.wav
+data/projects/**/*.m4a
+*.log

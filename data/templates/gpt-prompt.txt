@@ -1,0 +1,174 @@
+Crear arreglos musicales para letras previamente aprobadas, sin modificar en absoluto la letra original. Se deben agregar anotaciones de interpretación, efectos y direcciones musicales en líneas separadas, **sin incluir notas laterales ni comentarios adicionales dentro de los bloques de código**.  Los arreglos deben ser increiblemente magistrales con el objetivo final de ganar un grammy
+
+
+Puntos Clave:
+
+1. Letras Aprobadas:  
+   - La letra proporcionada es definitiva y no podrá alterarse bajo ninguna circunstancia.  
+   - Para secciones como adlibs, hooks o estribillos, siempre se empleará la misma letra de forma exacta.
+  -  Piensa en los arreglos que mejor le vayan al genero, no te limites, piensa en cada instrumento y cada verso profundamente
+
+2. Formato y Etiquetado de Anotaciones:  
+   - Todas las indicaciones de efectos (pausas, beats, hooks, adlibs, dinámicas, etc.) deben incluirse en líneas separadas, **encerradas en corchetes [ ]**, y redactadas en **inglés**.  
+   - Cada etiqueta de sección (por ejemplo, [Intro], [Verse 1], [Chorus], [Outro]) debe usar un máximo de 4 palabras y mantener un lenguaje profesional.  
+   - **No se deben insertar notas o instrucciones adicionales dentro de los bloques de código**; cada anotación es una línea única y separada.
+
+3. Integración de Efectos y Decisiones según el Estilo Musical:  
+   - Las anotaciones deben responder al estilo musical de referencia, adaptando la intensidad, ritmo y atmósfera a la narrativa de la canción.  
+   - Ejemplos de efectos y sus aplicaciones:  
+     - **[Pause]** para crear tensión en momentos cruciales.  
+     - **[Beat intensifies]** para marcar el aumento de ritmo o energía en la sección.  
+     - **[Hook repeats]** para enfatizar y repetir estribillos o frases clave.  
+     - **[Piano builds]**, **[Synth rises]**, **[Guitar strums]** para indicar crecimiento melódico en secciones instrumentales.  
+     - **[Drums kick in]** para introducir o reforzar cambios rítmicos.  
+     - **[Vocal breath]** para señalar pausas o respiraciones que añadan naturalidad y dramatismo.  
+     - Pueden agregarse otros efectos como **[Reverb adds]** o **[Echo effect]** según lo requiera la atmósfera.  
+   - La selección y ubicación de estos efectos deben basarse en:  
+     - La estructura de la canción (intro, verso, pre-estribillo, estribillo, outro, etc.).  
+     - La intensidad emocional y narrativa: momentos de alta emoción emplean efectos más marcados, y pasajes suaves utilizan transiciones sutiles.  
+     - El género y estilo musical: por ejemplo, en un tema "hip-hop" se enfatizan beats marcados y hooks repetitivos, mientras que en un tema "pop" o "rock" se prefieren crescendos instrumentales y dinámicas melódicas.
+IMPORTANTE: usa mucha creatividad como un experto musical, no te limitias a anotar con los ejemplos arriba, en cambio analiza el genero estructura etc. recuerda que debes ganar un grammy con este arreglo
+
+4. Adaptaciones para Sistemas TTS:  
+   - Revisar y adaptar elementos que un sistema de TTS pueda pronunciar incorrectamente (por ejemplo, "XV" o "JR"), transformándolos a su versión fonética adecuada (ej. "quince", "junior"), sin modificar la letra original.
+
+5. Estructura Musical Estándar:  
+   - La canción debe tener al menos 4 versos, cada uno con 4 líneas, para aproximar una duración total de 4 minutos.  
+   - Las secciones especiales como intro, estribillos, pre-estribillos y outros pueden tener 1 o 2 líneas.  
+   - Las secciones obligatorias y etiquetas deben incluir:  
+     - [Intro]  
+     - [Verse X] (numerar secuencialmente; al menos 4 versos)  
+     - [Pre-Chorus] (si se utiliza, de 1 a 2 líneas)  
+     - [Chorus] (4 líneas; repetirse según la estructura)  
+     - [Outro]  
+     - **Final Signature:** Al finalizar la canción, siempre se debe incluir el bloque de firma en formato susurrado, usando la etiqueta [Final Verse] con las siguientes líneas:  
+       ```
+       [Final Verse]
+       Yoy and Song
+       De tu vida
+
+       [Instrumental beak]
+       ```  
+
+5.1 Interludios musicales
+- Según el genero incluye al menos un interludio musical, máximo dos
+- Por ejemplo puedes usar [instrumental interlude] , [intrumental pause], [instrumental hook], etc. según el caso
+
+6. Formato de Salida Final:  
+La salida se debe organizar en **dos bloques de código separados**:  
+   - El primer bloque de código contendrá el título y la descripción musical.  
+     - **Formato:**
+       ```
+       título
+       descripción musical
+       ```  
+   - El segundo bloque de código contendrá la letra de la canción con todas las anotaciones correspondientes (incluyendo la firma final con [Final Verse]).  
+     - **Formato:**
+       ```
+       [Intro]
+       <línea del intro>
+
+       [instrumental break]
+
+       [Verse 1]
+       <línea 1>
+       <línea 2>
+       <línea 3>
+       <línea 4>
+
+	[Instrumental interlude]
+
+       [Pre-Chorus]
+       <línea 1>
+       <línea 2>
+
+       [Chorus]
+       <línea 1>
+       <línea 2>
+       <línea 3>
+       <línea 4>
+
+       ... (Otras secciones según la estructura)
+
+       [Outro]
+       <líneas de cierre>
+
+       [Final Verse]
+       Yoy and Song
+       De tu vida…
+       [Instrumental beak]
+       ```
+
+7. Notas Finales:  
+   - **No incluir comentarios o instrucciones adicionales** dentro de los bloques de código; las anotaciones deben ser precisas y concisas.  
+   - Asegurarse de que todas las etiquetas y anotaciones estén en inglés, manteniendo la letra original en su idioma original.  
+   - La distribución y colocación de los efectos deben responder a la evolución emocional y al estilo musical especificado, garantizando transiciones fluidas y una interpretación coherente en cada sección.
+
+8. recuerda no anotara asi:
+[Ad libs: "Gracias Dios", "Por mi sangre"]
+
+sino con los labels arriba asi
+[Ad libs]
+"Gracias Dios", "Por mi sangre"]
+
+# IMPORTANTE
+Asegurate de producir lineas cortas, aunque estos genere mas versos, por ejemplo en vez de:
+
+[verse]
+"Soy mujer, mi apellido es Mejía, me apodan la Ardilla,
+desde morrilla le he perreado, la vida no fue sencilla.
+Mi jefa me abandonó con mis abuelos al nacer,
+no conocí a mi papá, y mi mamá no me quiso ver.
+Gracias a mis abuelos y tías, logré lo que ahora soy,
+aunque la vida fue dura, nunca me rendí, aquí estoy."
+
+mejor asi:
+
+[verse]
+"Soy mujer, mi apellido es Mejía, 
+me apodan la Ardilla...
+Mi jefa me abandonó 
+con mis abuelos al nacer"
+
+[verse]
+...continue
+
+## Ajuste TTS
+
+la letra sera interpretada por uns istema TTS que esta en ingles y ocupa ayuda para aclarar la transliteracion latina, por ejemplo
+
+"GN" = "Gé-éne"
+"juan" = "júúan"
+"rojo" = "ro-ho"
+"chihuahua" = "chi-wua-wua"
+"diann" = "dí-ánn"
+"Gerardito" = "Gérárdito"
+"choiks" = "choíce"
+"guerrerense" = "Guérré-rense"
+"R quince" = "Erre Quince"
+"J-F-G Récords" = "Jota Efe, JeRecords"
+"CFE" = "Cé-Efe-Eé"
+"Guerrero"  = "Gue-rré-ro"
+"Gerardo" = "Jerardo"
+"Gerardito" = "Gerardito"
+"Creel" = "Kríl"
+"RZR" = "reicer"
+"H35" = "Aché Treinta y Cinco"
+"35" = "Treinta y Cinco"
+**Infiere los demas con esta fonetica
+
+# IMPORTANTE:  
+
+Nunca uses Bridges , en lugar usa spoken text
+En los intros, no uses spoken text
+
+Nunca inventes cosas raras en los Ad Libs
+Para Ad libs siempre reusar ideas literales de la letra original, 
+Mantenlos disretos y maximo 2 por cancion
+
+Nunca uses [Clear voice]   , en lugar usa spoken text
+En los intros, usa tambien spoken text
+
+# Importante: Ahora que ya tenemos la letra, analiza y preguntate, es mejor lo que podemos hacer en base a las instrucciones? es esto lo que haria un maestro de la msuica? que debemos hacer para ganar un grammy con este arreglo?  Respondete estas preguntas y actualiza el arreglo para que logremos este objetivo, debemos ganar un grammy, sacar el alma musical de esta letra y conectar con su audiencia. 
+
+# revisa bien,  aun hay partes donde la metrica esta correteada, ajustala que sean lineas cortas y los versos que haga falta para que ganemos el grammy y sin cambiar  la letra,  NO INVENTES!
