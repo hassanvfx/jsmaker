@@ -45,8 +45,15 @@ import type {
 // ============================================================================
 
 const SUNO_API_BASE = 'https://api.sunoapi.org';
-const SUNO_API_KEY = import.meta.env.VITE_SUNO_API_KEY;
-const DEFAULT_MODEL: SunoModel = (import.meta.env.VITE_SUNO_MODEL_VERSION as SunoModel) || 'V5';
+// Support both Vite (import.meta.env) and Node.js (process.env) environments
+const SUNO_API_KEY = typeof import.meta !== 'undefined' && import.meta.env 
+  ? import.meta.env.VITE_SUNO_API_KEY 
+  : process.env.VITE_SUNO_API_KEY;
+const DEFAULT_MODEL: SunoModel = (
+  typeof import.meta !== 'undefined' && import.meta.env 
+    ? import.meta.env.VITE_SUNO_MODEL_VERSION 
+    : process.env.VITE_SUNO_MODEL_VERSION
+) as SunoModel || 'V5';
 const DEFAULT_CALLBACK_URL = 'https://api.example.com/callback'; // Replace with your callback URL
 
 // ============================================================================

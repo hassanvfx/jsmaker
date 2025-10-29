@@ -84,31 +84,88 @@ export function GenerationControl({
         console.log('✅ Suno responded with task ID:', sunoId)
       }
 
-      // Poll for completion
+      // Poll for completion - with progressive audio delivery
       setProgress(`Waiting for Suno to complete generation (ID: ${sunoId})...`)
       console.log('⏳ Polling Suno API for completion...')
-      const details = await sunoService.pollUntilComplete(sunoId)
-      console.log('✅ Generation complete!', details)
-
-      if (!details.audioUrl) {
-        throw new Error('Generation completed but no audio URL received')
+      
+      let streamingAudioDelivered = false
+      let finalAudioUrl: string | null = null
+      
+      // Custom polling loop to deliver streaming audio first
+      for (let attempt = 0; attempt < 60; attempt++) {
+        const details = await sunoService.getMusicDetails(sunoId)
+        console.log(`Polling attempt ${attempt + 1}: status=${details.status}`)
+        
+        // Check for streaming audio at TEXT_SUCCESS (lyrics done, audio streaming)
+        if (!streamingAudioDelivered && 
+            (details.status === 'TEXT_SUCCESS' || details.status === 'FIRST_SUCCESS' || details.status === 'SUCCESS')) {
+          const streamAudioUrl = details.response?.sunoData?.[0]?.streamAudioUrl
+          if (streamAudioUrl) {
+            console.log('🎵 Streaming audio available!', streamAudioUrl)
+            setProgress('🎵 Audio streaming ready! Playing while final version processes...')
+            
+            // Deliver streaming audio immediately
+            await filesystemService.saveGeneration(project.id, {
+              sunoId,
+              status: 'streaming',
+              audioUrl: streamAudioUrl,
+              mode,
+              referenceAudioUrl: mode === 'remix' ? referenceAudioUrl : undefined,
+              lyrics: enhancedLyrics
+            })
+            
+            onGenerationComplete(streamAudioUrl, sunoId)
+            streamingAudioDelivered = true
+            console.log('✅ Streaming audio delivered to UI')
+          }
+        }
+        
+        // Check for final audio at SUCCESS (final high-quality audio ready)
+        if (details.status === 'SUCCESS') {
+          finalAudioUrl = details.response?.sunoData?.[0]?.audioUrl || details.response?.sunoData?.[0]?.streamAudioUrl
+          if (finalAudioUrl) {
+            console.log('✅ Final audio ready!', finalAudioUrl)
+            setProgress('✨ Final high-quality audio ready!')
+            
+            // Update with final audio
+            await filesystemService.saveGeneration(project.id, {
+              sunoId,
+              status: 'completed',
+              audioUrl: finalAudioUrl,
+              mode,
+              referenceAudioUrl: mode === 'remix' ? referenceAudioUrl : undefined,
+              lyrics: enhancedLyrics
+            })
+            
+            // If we already delivered streaming audio, update it
+            if (streamingAudioDelivered && finalAudioUrl !== details.response?.sunoData?.[0]?.streamAudioUrl) {
+              console.log('🔄 Updating UI with final audio URL')
+              onGenerationComplete(finalAudioUrl, sunoId)
+            } else if (!streamingAudioDelivered) {
+              // Edge case: went straight to SUCCESS without TEXT_SUCCESS
+              onGenerationComplete(finalAudioUrl, sunoId)
+            }
+            
+            break
+          }
+        }
+        
+        // Check for errors
+        if (details.status.includes('FAILED') || details.status.includes('ERROR')) {
+          throw new Error(`Generation failed with status: ${details.status}`)
+        }
+        
+        // Wait before next poll
+        await new Promise(resolve => setTimeout(resolve, 5000))
+      }
+      
+      // Verify we got some audio
+      if (!streamingAudioDelivered && !finalAudioUrl) {
+        throw new Error('Generation timeout: no audio URL received after 5 minutes')
       }
 
-      // Save generation to project
-      setProgress('Saving generation...')
-      await filesystemService.saveGeneration(project.id, {
-        sunoId,
-        status: 'completed',
-        audioUrl: details.audioUrl,
-        mode,
-        referenceAudioUrl: mode === 'remix' ? referenceAudioUrl : undefined,
-        lyrics: enhancedLyrics
-      })
-
       setProgress('Generation complete!')
-      console.log('🎉 Calling onGenerationComplete callback')
-      onGenerationComplete(details.audioUrl, sunoId)
-
+      
       // Clear progress after a delay
       setTimeout(() => {
         setProgress('')

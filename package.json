@@ -15,7 +15,7 @@
     "test:coverage": "NODE_OPTIONS=--experimental-vm-modules jest --coverage",
     "test:atomic": "NODE_OPTIONS=--experimental-vm-modules jest tests/unit",
     "test:api": "NODE_OPTIONS=--experimental-vm-modules jest tests/api",
-    "test:integration": "NODE_OPTIONS=--experimental-vm-modules jest tests/integration"
+    "test:integration": "RUN_INTEGRATION_TESTS=true NODE_OPTIONS=--experimental-vm-modules jest tests/integration"
   },
   "dependencies": {
     "axios": "^1.6.0",

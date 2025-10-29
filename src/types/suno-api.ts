@@ -9,7 +9,15 @@
 
 export type SunoModel = 'V3_5' | 'V4' | 'V4_5' | 'V4_5PLUS' | 'V5';
 export type VocalGender = 'm' | 'f';
-export type GenerationStatus = 'pending' | 'processing' | 'completed' | 'error' | 'complete';
+export type GenerationStatus = 
+  | 'PENDING'
+  | 'TEXT_SUCCESS'
+  | 'FIRST_SUCCESS'
+  | 'SUCCESS'
+  | 'CREATE_TASK_FAILED'
+  | 'GENERATE_AUDIO_FAILED'
+  | 'CALLBACK_EXCEPTION'
+  | 'SENSITIVE_WORD_ERROR';
 
 // ============================================================================
 // Common Request/Response Types
@@ -146,17 +154,36 @@ export interface BoostMusicStyleRequest {
   callBackUrl: string;
 }
 
-export interface MusicGenerationDetails {
+export interface SunoTrack {
   id: string;
+  audioUrl: string;
+  sourceAudioUrl: string;
+  streamAudioUrl: string;
+  sourceStreamAudioUrl: string;
+  imageUrl: string;
+  sourceImageUrl: string;
+  prompt: string;
+  modelName: string;
+  title: string;
+  tags: string;
+  createTime: number;
+  duration: number;
+}
+
+export interface MusicGenerationDetails {
+  taskId: string;
+  parentMusicId?: string;
+  param?: string;
+  response: {
+    taskId: string;
+    sunoData: SunoTrack[];
+  };
   status: GenerationStatus;
-  title?: string;
-  lyric?: string;
-  audioUrl?: string;
-  videoUrl?: string;
-  imageUrl?: string;
-  createdAt?: string;
-  modelName?: string;
-  duration?: number;
+  type?: string;
+  operationType?: string;
+  errorCode?: string | null;
+  errorMessage?: string | null;
+  createTime?: number;
 }
 
 // ============================================================================
